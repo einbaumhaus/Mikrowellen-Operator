@@ -1,0 +1,278 @@
+[gd_scene load_steps=14 format=3 uid="uid://bm1qebsjbob6a"]
+
+[ext_resource type="Script" uid="uid://duagpuybgm7a7" path="res://main.gd" id="1_7mycd"]
+[ext_resource type="Texture2D" uid="uid://bk7fhmnjma67r" path="res://Sprites/background/wall.png" id="1_h2yge"]
+[ext_resource type="Texture2D" uid="uid://bnkeb4jk2ptu" path="res://Sprites/microwave/microwave.png" id="2_1bvp3"]
+[ext_resource type="Script" uid="uid://ban2u34xlg4ob" path="res://Sprites/microwave/microwave_code/microwave.gd" id="2_lquwl"]
+[ext_resource type="PackedScene" uid="uid://b74s5mvppnnq3" path="res://Sprites/Food/food.tscn" id="3_5vw27"]
+[ext_resource type="Script" uid="uid://c2c0agow4v0ha" path="res://path_follow_2d.gd" id="3_kek77"]
+[ext_resource type="Script" uid="uid://div8nv6v7js0d" path="res://Sprites/microwave/microwave_code/button_microwave1.gd" id="4_7mycd"]
+[ext_resource type="Texture2D" uid="uid://bhpk26hq2hv71" path="res://Sprites/microwave/microwave_cooking.png" id="4_272bh"]
+
+[sub_resource type="Curve2D" id="Curve2D_272bh"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 103, 601, 0, 0, 0, 0, 899, 598)
+}
+point_count = 2
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_272bh"]
+load_path = "res://.godot/imported/microwave.png-21b59c264e85746ce08a737b7f66bc20.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5vw27"]
+load_path = "res://.godot/imported/microwave_open.png-7530d82bb9f1e943a3adb00aebcb6bde.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5vw27"]
+size = Vector2(212, 134)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7mycd"]
+bg_color = Color(0, 0.68555, 0.694228, 1)
+
+[node name="MAIN" type="Node2D"]
+script = ExtResource("1_7mycd")
+
+[node name="Enviroment" type="Node2D" parent="."]
+
+[node name="Wall" type="Sprite2D" parent="Enviroment"]
+position = Vector2(576.5, 324)
+scale = Vector2(0.599479, 0.6)
+texture = ExtResource("1_h2yge")
+
+[node name="Path2D" type="Path2D" parent="Enviroment"]
+curve = SubResource("Curve2D_272bh")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Enviroment/Path2D"]
+position = Vector2(103, 601)
+rotation = -0.00376883
+script = ExtResource("3_kek77")
+
+[node name="food2" parent="Enviroment/Path2D/PathFollow2D" instance=ExtResource("3_5vw27")]
+position = Vector2(-26.9207, -21.1016)
+rotation = 0.00376883
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 324)
+
+[node name="microwaves" type="Node2D" parent="."]
+
+[node name="microwave4" type="Area2D" parent="microwaves"]
+position = Vector2(776, 5)
+script = ExtResource("2_lquwl")
+texture_normal = SubResource("CompressedTexture2D_272bh")
+texture_hoover = SubResource("CompressedTexture2D_5vw27")
+texture_cooking = ExtResource("4_272bh")
+
+[node name="microwave_sprite" type="Sprite2D" parent="microwaves/microwave4"]
+position = Vector2(190, 163)
+scale = Vector2(0.263, 0.263)
+texture = ExtResource("2_1bvp3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="microwaves/microwave4"]
+position = Vector2(190, 163)
+shape = SubResource("RectangleShape2D_5vw27")
+
+[node name="microwave3" type="Area2D" parent="microwaves"]
+position = Vector2(518, 5)
+script = ExtResource("2_lquwl")
+texture_normal = SubResource("CompressedTexture2D_272bh")
+texture_hoover = SubResource("CompressedTexture2D_5vw27")
+texture_cooking = ExtResource("4_272bh")
+
+[node name="microwave_sprite" type="Sprite2D" parent="microwaves/microwave3"]
+position = Vector2(190, 163)
+scale = Vector2(0.263, 0.263)
+texture = ExtResource("2_1bvp3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="microwaves/microwave3"]
+position = Vector2(190, 163)
+shape = SubResource("RectangleShape2D_5vw27")
+
+[node name="microwave2" type="Area2D" parent="microwaves"]
+position = Vector2(260, 5)
+script = ExtResource("2_lquwl")
+texture_normal = SubResource("CompressedTexture2D_272bh")
+texture_hoover = SubResource("CompressedTexture2D_5vw27")
+texture_cooking = ExtResource("4_272bh")
+
+[node name="microwave_sprite" type="Sprite2D" parent="microwaves/microwave2"]
+position = Vector2(190, 163)
+scale = Vector2(0.263, 0.263)
+texture = ExtResource("2_1bvp3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="microwaves/microwave2"]
+position = Vector2(190, 163)
+shape = SubResource("RectangleShape2D_5vw27")
+
+[node name="microwave1" type="Area2D" parent="microwaves"]
+position = Vector2(0, 5)
+script = ExtResource("2_lquwl")
+texture_normal = SubResource("CompressedTexture2D_272bh")
+texture_hoover = SubResource("CompressedTexture2D_5vw27")
+texture_cooking = ExtResource("4_272bh")
+
+[node name="microwave_sprite" type="Sprite2D" parent="microwaves/microwave1"]
+position = Vector2(190, 163)
+scale = Vector2(0.263, 0.263)
+texture = ExtResource("2_1bvp3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="microwaves/microwave1"]
+position = Vector2(190, 163)
+shape = SubResource("RectangleShape2D_5vw27")
+
+[node name="level_indicator" type="Label" parent="microwaves/microwave1"]
+offset_left = 86.0
+offset_top = 56.0
+offset_right = 159.0
+offset_bottom = 92.0
+theme_override_font_sizes/font_size = 26
+text = "LEVEL"
+
+[node name="upgrade" type="Button" parent="microwaves/microwave1"]
+offset_left = 190.0
+offset_top = 56.0
+offset_right = 292.0
+offset_bottom = 92.0
+theme_override_font_sizes/font_size = 20
+toggle_mode = true
+text = "UPGRADE"
+script = ExtResource("4_7mycd")
+
+[node name="upgrade_panel" type="Control" parent="microwaves/microwave1"]
+process_mode = 4
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 311.0
+offset_top = 32.0
+offset_right = 454.0
+offset_bottom = 253.0
+
+[node name="Panel" type="Panel" parent="microwaves/microwave1/upgrade_panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7mycd")
+
+[node name="microwave8" type="Area2D" parent="microwaves"]
+position = Vector2(774, 215)
+script = ExtResource("2_lquwl")
+texture_normal = SubResource("CompressedTexture2D_272bh")
+texture_hoover = SubResource("CompressedTexture2D_5vw27")
+texture_cooking = ExtResource("4_272bh")
+
+[node name="microwave_sprite" type="Sprite2D" parent="microwaves/microwave8"]
+position = Vector2(190, 163)
+scale = Vector2(0.263, 0.263)
+texture = ExtResource("2_1bvp3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="microwaves/microwave8"]
+position = Vector2(190, 163)
+shape = SubResource("RectangleShape2D_5vw27")
+
+[node name="microwave7" type="Area2D" parent="microwaves"]
+position = Vector2(518, 215)
+script = ExtResource("2_lquwl")
+texture_normal = SubResource("CompressedTexture2D_272bh")
+texture_hoover = SubResource("CompressedTexture2D_5vw27")
+texture_cooking = ExtResource("4_272bh")
+
+[node name="microwave_sprite" type="Sprite2D" parent="microwaves/microwave7"]
+position = Vector2(190, 163)
+scale = Vector2(0.263, 0.263)
+texture = ExtResource("2_1bvp3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="microwaves/microwave7"]
+position = Vector2(190, 163)
+shape = SubResource("RectangleShape2D_5vw27")
+
+[node name="microwave6" type="Area2D" parent="microwaves"]
+position = Vector2(261, 215)
+script = ExtResource("2_lquwl")
+texture_normal = SubResource("CompressedTexture2D_272bh")
+texture_hoover = SubResource("CompressedTexture2D_5vw27")
+texture_cooking = ExtResource("4_272bh")
+
+[node name="microwave_sprite" type="Sprite2D" parent="microwaves/microwave6"]
+position = Vector2(190, 163)
+scale = Vector2(0.263, 0.263)
+texture = ExtResource("2_1bvp3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="microwaves/microwave6"]
+position = Vector2(190, 163)
+shape = SubResource("RectangleShape2D_5vw27")
+
+[node name="microwave5" type="Area2D" parent="microwaves"]
+position = Vector2(0, 215)
+script = ExtResource("2_lquwl")
+texture_normal = SubResource("CompressedTexture2D_272bh")
+texture_hoover = SubResource("CompressedTexture2D_5vw27")
+texture_cooking = ExtResource("4_272bh")
+
+[node name="microwave_sprite" type="Sprite2D" parent="microwaves/microwave5"]
+position = Vector2(190, 163)
+scale = Vector2(0.263, 0.263)
+texture = ExtResource("2_1bvp3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="microwaves/microwave5"]
+position = Vector2(190, 163)
+shape = SubResource("RectangleShape2D_5vw27")
+
+[node name="DEBUG" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 649.0
+mouse_filter = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DEBUG"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -145.0
+offset_top = -101.0
+offset_right = -2.0
+grow_horizontal = 0
+grow_vertical = 0
+alignment = 1
+
+[node name="spawn_food" type="Button" parent="DEBUG/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "SPAWN FOOD"
+
+[node name="reset" type="Button" parent="DEBUG/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "RESET"
+
+[node name="exit" type="Button" parent="DEBUG/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "EXIT"
+
+[connection signal="area_entered" from="microwaves/microwave4" to="microwaves/microwave4" method="_on_area_entered"]
+[connection signal="area_exited" from="microwaves/microwave4" to="microwaves/microwave4" method="_on_area_exited"]
+[connection signal="area_entered" from="microwaves/microwave3" to="microwaves/microwave3" method="_on_area_entered"]
+[connection signal="area_exited" from="microwaves/microwave3" to="microwaves/microwave3" method="_on_area_exited"]
+[connection signal="area_entered" from="microwaves/microwave2" to="microwaves/microwave2" method="_on_area_entered"]
+[connection signal="area_exited" from="microwaves/microwave2" to="microwaves/microwave2" method="_on_area_exited"]
+[connection signal="area_entered" from="microwaves/microwave1" to="microwaves/microwave1" method="_on_area_entered"]
+[connection signal="area_exited" from="microwaves/microwave1" to="microwaves/microwave1" method="_on_area_exited"]
+[connection signal="pressed" from="microwaves/microwave1/upgrade" to="microwaves/microwave1/upgrade" method="_on_pressed"]
+[connection signal="area_entered" from="microwaves/microwave8" to="microwaves/microwave8" method="_on_area_entered"]
+[connection signal="area_exited" from="microwaves/microwave8" to="microwaves/microwave8" method="_on_area_exited"]
+[connection signal="area_entered" from="microwaves/microwave7" to="microwaves/microwave7" method="_on_area_entered"]
+[connection signal="area_exited" from="microwaves/microwave7" to="microwaves/microwave7" method="_on_area_exited"]
+[connection signal="area_entered" from="microwaves/microwave6" to="microwaves/microwave6" method="_on_area_entered"]
+[connection signal="area_exited" from="microwaves/microwave6" to="microwaves/microwave6" method="_on_area_exited"]
+[connection signal="area_entered" from="microwaves/microwave5" to="microwaves/microwave5" method="_on_area_entered"]
+[connection signal="area_exited" from="microwaves/microwave5" to="microwaves/microwave5" method="_on_area_exited"]
+[connection signal="pressed" from="DEBUG/VBoxContainer/spawn_food" to="Enviroment/Path2D/PathFollow2D" method="_on_spawn_food_pressed"]
+[connection signal="pressed" from="DEBUG/VBoxContainer/exit" to="." method="_on_exit_pressed"]
+
+[editable path="Enviroment/Path2D/PathFollow2D/food2"]
