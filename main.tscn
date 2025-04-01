@@ -1,19 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://bm1qebsjbob6a"]
+[gd_scene load_steps=17 format=3 uid="uid://bm1qebsjbob6a"]
 
 [ext_resource type="Script" uid="uid://duagpuybgm7a7" path="res://main.gd" id="1_7mycd"]
 [ext_resource type="Texture2D" uid="uid://bk7fhmnjma67r" path="res://Sprites/background/wall.png" id="1_h2yge"]
 [ext_resource type="Texture2D" uid="uid://bnkeb4jk2ptu" path="res://Sprites/microwave/microwave.png" id="2_1bvp3"]
 [ext_resource type="Script" uid="uid://ban2u34xlg4ob" path="res://Sprites/microwave/microwave_code/microwave.gd" id="2_lquwl"]
-[ext_resource type="PackedScene" uid="uid://b74s5mvppnnq3" path="res://Sprites/Food/food.tscn" id="3_5vw27"]
-[ext_resource type="Script" uid="uid://c2c0agow4v0ha" path="res://path_follow_2d.gd" id="3_kek77"]
+[ext_resource type="Script" uid="uid://nud3h75pyc7p" path="res://spawnpoints.gd" id="3_5vw27"]
 [ext_resource type="Script" uid="uid://div8nv6v7js0d" path="res://Sprites/microwave/microwave_code/button_microwave1.gd" id="4_7mycd"]
 [ext_resource type="Texture2D" uid="uid://bhpk26hq2hv71" path="res://Sprites/microwave/microwave_cooking.png" id="4_272bh"]
-
-[sub_resource type="Curve2D" id="Curve2D_272bh"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 103, 601, 0, 0, 0, 0, 899, 598)
-}
-point_count = 2
+[ext_resource type="Script" uid="uid://bgnymqp1su01" path="res://spawnpoint.gd" id="4_kek77"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_272bh"]
 load_path = "res://.godot/imported/microwave.png-21b59c264e85746ce08a737b7f66bc20.ctex"
@@ -27,6 +21,18 @@ size = Vector2(212, 134)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7mycd"]
 bg_color = Color(0, 0.68555, 0.694228, 1)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kek77"]
+size = Vector2(39, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4c57u"]
+size = Vector2(34, 49)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_efxa6"]
+size = Vector2(31, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dg77c"]
+size = Vector2(25, 50)
+
 [node name="MAIN" type="Node2D"]
 script = ExtResource("1_7mycd")
 
@@ -36,18 +42,6 @@ script = ExtResource("1_7mycd")
 position = Vector2(576.5, 324)
 scale = Vector2(0.599479, 0.6)
 texture = ExtResource("1_h2yge")
-
-[node name="Path2D" type="Path2D" parent="Enviroment"]
-curve = SubResource("Curve2D_272bh")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Enviroment/Path2D"]
-position = Vector2(103, 601)
-rotation = -0.00376883
-script = ExtResource("3_kek77")
-
-[node name="food2" parent="Enviroment/Path2D/PathFollow2D" instance=ExtResource("3_5vw27")]
-position = Vector2(-26.9207, -21.1016)
-rotation = 0.00376883
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 324)
@@ -219,6 +213,53 @@ texture = ExtResource("2_1bvp3")
 position = Vector2(190, 163)
 shape = SubResource("RectangleShape2D_5vw27")
 
+[node name="spawnpoints" type="Node2D" parent="."]
+script = ExtResource("3_5vw27")
+
+[node name="spawnpoint" type="Marker2D" parent="spawnpoints"]
+position = Vector2(155, 557)
+script = ExtResource("4_kek77")
+
+[node name="AreaSP1" type="Area2D" parent="spawnpoints/spawnpoint"]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="spawnpoints/spawnpoint/AreaSP1"]
+position = Vector2(9.5, 15)
+shape = SubResource("RectangleShape2D_kek77")
+
+[node name="spawnpoint2" type="Marker2D" parent="spawnpoints"]
+position = Vector2(304, 557)
+script = ExtResource("4_kek77")
+
+[node name="AreaSP2" type="Area2D" parent="spawnpoints/spawnpoint2"]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="spawnpoints/spawnpoint2/AreaSP2"]
+position = Vector2(7, 14.5)
+shape = SubResource("RectangleShape2D_4c57u")
+
+[node name="spawnpoint3" type="Marker2D" parent="spawnpoints"]
+position = Vector2(464, 557)
+script = ExtResource("4_kek77")
+
+[node name="AreaSP3" type="Area2D" parent="spawnpoints/spawnpoint3"]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="spawnpoints/spawnpoint3/AreaSP3"]
+position = Vector2(5.5, 15)
+shape = SubResource("RectangleShape2D_efxa6")
+
+[node name="spawnpoint4" type="Marker2D" parent="spawnpoints"]
+position = Vector2(611, 557)
+script = ExtResource("4_kek77")
+
+[node name="AreaSP4" type="Area2D" parent="spawnpoints/spawnpoint4"]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="spawnpoints/spawnpoint4/AreaSP4"]
+position = Vector2(2.5, 15)
+shape = SubResource("RectangleShape2D_dg77c")
+
 [node name="DEBUG" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
@@ -272,7 +313,13 @@ text = "EXIT"
 [connection signal="area_exited" from="microwaves/microwave6" to="microwaves/microwave6" method="_on_area_exited"]
 [connection signal="area_entered" from="microwaves/microwave5" to="microwaves/microwave5" method="_on_area_entered"]
 [connection signal="area_exited" from="microwaves/microwave5" to="microwaves/microwave5" method="_on_area_exited"]
-[connection signal="pressed" from="DEBUG/VBoxContainer/spawn_food" to="Enviroment/Path2D/PathFollow2D" method="_on_spawn_food_pressed"]
+[connection signal="area_entered" from="spawnpoints/spawnpoint/AreaSP1" to="spawnpoints" method="_on_area_sp_1_area_entered"]
+[connection signal="area_exited" from="spawnpoints/spawnpoint/AreaSP1" to="spawnpoints" method="_on_area_sp_1_area_exited"]
+[connection signal="area_entered" from="spawnpoints/spawnpoint2/AreaSP2" to="spawnpoints" method="_on_area_sp_2_area_entered"]
+[connection signal="area_exited" from="spawnpoints/spawnpoint2/AreaSP2" to="spawnpoints" method="_on_area_sp_2_area_exited"]
+[connection signal="area_entered" from="spawnpoints/spawnpoint3/AreaSP3" to="spawnpoints" method="_on_area_sp_3_area_entered"]
+[connection signal="area_exited" from="spawnpoints/spawnpoint3/AreaSP3" to="spawnpoints" method="_on_area_sp_3_area_exited"]
+[connection signal="area_entered" from="spawnpoints/spawnpoint4/AreaSP4" to="spawnpoints" method="_on_area_sp_4_area_entered"]
+[connection signal="area_exited" from="spawnpoints/spawnpoint4/AreaSP4" to="spawnpoints" method="_on_area_sp_4_area_exited"]
+[connection signal="pressed" from="DEBUG/VBoxContainer/spawn_food" to="spawnpoints" method="_on_spawn_food_pressed"]
 [connection signal="pressed" from="DEBUG/VBoxContainer/exit" to="." method="_on_exit_pressed"]
-
-[editable path="Enviroment/Path2D/PathFollow2D/food2"]
