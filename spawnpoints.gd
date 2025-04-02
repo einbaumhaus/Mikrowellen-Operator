@@ -18,22 +18,26 @@ func _process(delta: float) -> void:
 
 func spawn():
 	var obj = spawn_object.instantiate()
-	if sp1.filled == false:
+	if not sp1.filled:
 		add_child(obj)
 		obj.position = sp1.position
-	elif sp2.filled == false:
+	elif not sp2.filled:
 		add_child(obj)
 		obj.position = sp2.position
-	elif sp3.filled == false:
+	elif not sp3.filled:
 		add_child(obj)
 		obj.position = sp3.position
-	elif sp4.filled == false:
+	elif not sp4.filled:
 		add_child(obj)
 		obj.position = sp4.position
-	else:
+	else: 
+		check_full_list()
 		
 func check_full_list():
-	if sp1.filled == false
+	var obj = spawn_object.instantiate()
+	if not sp1.filled:
+		add_child(obj)
+		obj.position = sp1.position
 
 
 	#if spawn_count <= 5:
