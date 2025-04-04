@@ -14,7 +14,8 @@ var cooking_state = 0
 var inside = 0
 
 func _ready() -> void:
-	pass
+		collision_layer = 2
+		collision_mask = 2
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_released("left_mouse") and inside == 1:
