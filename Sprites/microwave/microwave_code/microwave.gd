@@ -6,7 +6,7 @@ extends Area2D
 @export var texture_normal : Texture2D
 @export var texture_hoover : Texture2D
 @export var texture_cooking : Texture2D
-
+var new_body = null
 #if 0 it's not cooking, if 1 it's cooking
 var cooking_state = 0
 
@@ -22,6 +22,9 @@ func _process(delta: float) -> void:
 		cooking_state = 1
 		print("cooking")
 		monitorable = false
+		if new_body != null:
+			new_body.queue_free()
+
 	else:
 		pass
 	if cooking_state == 1:
@@ -31,6 +34,9 @@ func _on_area_entered(area: Area2D) -> void:
 	inside = 1
 	microwave_sprite.texture = texture_hoover
 	print("microwave_entered")
+	if area.name == "food":
+		new_body = area
+		print(new_body)
 
 func _on_area_exited(area: Area2D) -> void:
 	inside = 0

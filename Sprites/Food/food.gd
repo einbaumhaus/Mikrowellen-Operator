@@ -12,7 +12,6 @@ var inside_microwave = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	food_sprite.texture = texture
 	collision_layer = 3
 	collision_mask = 3
 
@@ -21,11 +20,9 @@ func _process(delta: float) -> void:
 	if Input.is_action_pressed("left_mouse") and mouse_inside == true:
 		position = get_global_mouse_position()
 		detection_running = false
-		mouse_drag.disabled = false
 		if Input.is_action_just_released("left_mouse") and inside_microwave == true:
 			queue_free()
-		else:
-			mouse_drag.disabled = true
+
 	
 func _on_mouse_entered() -> void:
 	if detection_running == true:

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://rxk4x61nfyh1"
-path="res://.godot/imported/1900x1900-000000-80-0-0.jpg-28062d3e2f7a11726c3cbae55f31b186.ctex"
+uid="uid://dbnkyuu3hk2x2"
+path="res://.godot/imported/microwave meal.png-5202c6f2a3767c692f7d2ed83b1cd2ed.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Food/1900x1900-000000-80-0-0.jpg"
-dest_files=["res://.godot/imported/1900x1900-000000-80-0-0.jpg-28062d3e2f7a11726c3cbae55f31b186.ctex"]
+source_file="res://Sprites/Food/microwave meal.png"
+dest_files=["res://.godot/imported/microwave meal.png-5202c6f2a3767c692f7d2ed83b1cd2ed.ctex"]
 
 [params]
 
